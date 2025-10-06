@@ -32,6 +32,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-6">
+      <h1 className="text-4xl font-bold">Mozo test app page</h1>
       <button
         onClick={rateUs}
         className="px-6 py-3 text-white bg-green-600 rounded-lg hover:bg-green-700 transition"
