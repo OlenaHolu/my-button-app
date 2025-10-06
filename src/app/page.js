@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   function rateUs() {
-    return postToApp("open_pp_action");
+    return postToApp("open_rate_us");
   }
 
   return (
