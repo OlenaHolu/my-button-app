@@ -10,15 +10,17 @@ export default function Home() {
       window.PlatformInterface.onEvent(raw);
       return true;
     }
-    
-    try {
-        const obj = typeof payload === "string" ? payload : { raw };
-        window.webkit.messageHandlers.PlatformInterface.postMessage(obj);
-        console.log("[JS] iOS -> postMessage:", raw);
-        return true;
-      } catch {
-        console.warn("[JS] No IOS interface", raw);
-      }
+
+    if(window.webkit.messageHandlers.PlatformInterface) {
+      try {
+          const obj = typeof payload === "string" ? payload : { raw };
+          window.webkit.messageHandlers.PlatformInterface.postMessage(obj);
+          console.log("[JS] iOS -> postMessage:", raw);
+          return true;
+        } catch {
+          console.warn("[JS] No IOS interface", raw);
+        }
+    }
     
 
     console.warn("No native bridge available");
