@@ -15,10 +15,10 @@ export default function Home() {
         const obj = typeof payload === "string" ? { raw } : payload;
         window.webkit.messageHandlers.PlatformInterface.postMessage(obj);
         console.log("[JS] iOS -> postMessage:", raw);
+        return true;
       } catch {
         console.warn("[JS] No IOS interface", raw);
       }
-      return true;
     }
 
     console.warn("No native bridge available");
