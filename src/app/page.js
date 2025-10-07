@@ -10,14 +10,13 @@ export default function Home() {
       window.PlatformInterface.onEvent(raw);
       return true;
     }
-
-    if (window.webkit?.messageHandlers?.PlatformInterface) {
-      console.log("[JS] iOS -> postMessage:", raw);
-      try {
+    
+    try {
         const obj = typeof payload === "string" ? { raw } : payload;
         window.webkit.messageHandlers.PlatformInterface.postMessage(obj);
+        console.log("[JS] iOS -> postMessage:", raw);
       } catch {
-        window.webkit.messageHandlers.PlatformInterface.postMessage({ raw });
+        console.warn("[JS] No IOS interface", raw);
       }
       return true;
     }
