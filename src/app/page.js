@@ -12,7 +12,7 @@ export default function Home() {
     }
     
     try {
-        const obj = typeof payload === "string" ? { raw } : payload;
+        const obj = typeof payload === "string" ? payload : { raw };
         window.webkit.messageHandlers.PlatformInterface.postMessage(obj);
         console.log("[JS] iOS -> postMessage:", raw);
         return true;
