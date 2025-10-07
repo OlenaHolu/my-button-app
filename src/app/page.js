@@ -19,7 +19,7 @@ export default function Home() {
       } catch {
         console.warn("[JS] No IOS interface", raw);
       }
-    }
+    
 
     console.warn("No native bridge available");
     return false;
